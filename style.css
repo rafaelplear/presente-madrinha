@@ -53,24 +53,28 @@ h2 {
 .revelar {
     background: #f5f2f2;
     color: #ff4d6d;
-     border: none;
+    border: none;
     padding: 20px 40px;
     font-size: 1.2rem;
     border-radius: 15px;
     cursor: pointer;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-   transition: 0.3s;
+    transition: 0.3s;
 }
+
 .revelar:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
+
 .musica-container {
     margin-top: 20vh;
 }
+
 .linha-do-tempo {
     max-width: 800px;
     margin: 80px auto;
 }
+
 .linha-do-tempo h2 {
     text-align: center;
     margin-bottom: 40px;
@@ -94,7 +98,7 @@ h2 {
 }
 
 .bolinha::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 20px;
     left: 9px;
@@ -102,17 +106,19 @@ h2 {
     height: 90px;
     background-color: #ff4d6d;
 }
+
 .evento:last-child .bolinha::after {
     display: none;
 }
+
 .texto {
     flex: 1;
     background: white;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    flex: 1;
 }
+
 .texto h3 {
     margin-top: 0;
     color: #ff4d6d;
@@ -120,53 +126,51 @@ h2 {
 
 .texto p {
     margin: 0;
+    line-height: 1.6;
 }
 
 .carrossel {
-overflow: hidden;
-border-radius: 20px;
-   width: 90%;
-   max-width: 380px;
-   margin: 120px auto 100px auto;
-  background: white;
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    max-width: 380px;
+    height: 470px;
+    margin: 120px auto 100px auto;
+    background: white;
     padding: 12px;
     border-radius: 28px;
-   box-shadow: 0 15px 38px rgba(0, 0, 0, 0.12);
-}
-
-.slide img {
-width: 100%;
-border-radius: 20px;
-
-
-
+    box-shadow: 0 15px 38px rgba(0, 0, 0, 0.12);
 }
 
 .slide {
-    width: 100%;
+    width: calc(100% - 24px);
     height: 450px;
     object-fit: cover;
     border-radius: 20px;
     display: none;
-    justify-content: center;
     position: absolute;
+    top: 12px;
+    left: 12px;
     opacity: 0;
     transition: opacity 1.5s ease-in-out;
 }
 
 .slide.ativo {
-    opacity: 1;
     display: block;
+    opacity: 1;
 }
 
-#spotify{
-width: 90%;
-max-width: 500px;
-margin: 50px auto 120px auto;
-
+#spotify {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto 120px auto;
 }
 
-#chuva{
+#spotify iframe {
+    width: 100%;
+}
+
+#chuva {
     position: fixed;
     top: 0;
     left: 0;
@@ -183,14 +187,12 @@ section,
 .musica-container,
 #spotify,
 .texto,
-.contador-box{
+.contador-box {
     position: relative;
     z-index: 1;
 }
 
-
-
-.emoji{
+.emoji {
     position: fixed;
     font-size: 22px;
     animation: cair linear forwards;
@@ -198,19 +200,55 @@ section,
     opacity: 0.8;
 }
 
-@keyframes cair{
-    0%{
-        transform: translateY(-50px)
-        rotate(0deg);
+@keyframes cair {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
         opacity: 0;
     }
 
-    10%{
+    10% {
         opacity: 1;
     }
-    100%{
+
+    100% {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
-    
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .caixa {
+        width: 80px;
+        padding: 15px 5px;
+    }
+
+    .caixa span {
+        font-size: 1.5rem;
+    }
+
+    .evento {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bolinha {
+        margin-bottom: 10px;
+    }
+
+    .bolinha::after {
+        display: none;
+    }
+
+    .carrossel {
+        max-width: 95%;
+        height: 400px;
+    }
+
+    .slide {
+        height: 380px;
+    }
 }
