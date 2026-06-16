@@ -1,4 +1,4 @@
-const inicio = new Date("2026-02-04");
+const inicio = new Date("2025-02-04");
 
 function atualizarContador() {
 
@@ -39,7 +39,6 @@ function atualizarContador() {
 }
 
 setInterval(atualizarContador, 1000);
-
 atualizarContador();
 
 const revelarBtn = document.getElementById("revelarBtn");
@@ -52,20 +51,31 @@ revelarBtn.addEventListener("click", () => {
 
 const slides = document.querySelectorAll(".slide");
 let atual = 0;
+
 function mostrarSlide() {
+
     slides[atual].classList.remove("ativo");
+
     atual++;
+
     if (atual >= slides.length) {
         atual = 0;
     }
+
     slides[atual].classList.add("ativo");
 }
 
 setInterval(mostrarSlide, 3000);
 
-const emojis = ["🤍", "🎉","🤍", "🎉","🤍", "🎉","🤍", "🎉","🤍", "🎉","🤍", "🎉","🤍", "🎉","🤍", "🎉","🤍", "🎉"];
+const emojis = [
+    "🤍", "🎉",
+    "🤍", "🎉",
+    "🤍", "🎉",
+    "🤍", "🎉",
+    "🤍", "🎉"
+];
 
-function criarEmoji(){
+function criarEmoji() {
 
     const emoji = document.createElement("div");
 
@@ -74,7 +84,7 @@ function criarEmoji(){
     emoji.innerHTML =
         emojis[Math.floor(Math.random() * emojis.length)];
 
-    emoji.style.left = Math.random() * 10 + "vw";
+    emoji.style.left = Math.random() * 100 + "vw";
 
     emoji.style.animationDuration =
         (Math.random() * 20 + 20) + "s";
@@ -97,25 +107,32 @@ carrossel.addEventListener("touchstart", (e) => {
 });
 
 carrossel.addEventListener("touchend", (e) => {
+
     let fimX = e.changedTouches[0].clientX;
 
     if (inicioX - fimX > 50) {
-        proximaFoto(); // arrastou para esquerda
+        proximaFoto();
     }
 
     if (fimX - inicioX > 50) {
-        fotoAnterior(); // arrastou para direita
+        fotoAnterior();
     }
 });
 
 function proximaFoto() {
-    slides[indice].classList.remove("ativo");
-    indice = (indice + 1) % slides.length;
-    slides[indice].classList.add("ativo");
+
+    slides[atual].classList.remove("ativo");
+
+    atual = (atual + 1) % slides.length;
+
+    slides[atual].classList.add("ativo");
 }
 
 function fotoAnterior() {
-    slides[indice].classList.remove("ativo");
-    indice = (indice - 1 + slides.length) % slides.length;
-    slides[indice].classList.add("ativo");
+
+    slides[atual].classList.remove("ativo");
+
+    atual = (atual - 1 + slides.length) % slides.length;
+
+    slides[atual].classList.add("ativo");
 }
